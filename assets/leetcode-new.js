@@ -33,3 +33,17 @@ var twoSum = function (nums, target) {
 };
 
 console.log(twoSum([2, 7, 11, 15], 18));
+
+//27. Remove Element
+const removeElement = function (nums, val) {
+  const newNums = nums.filter((ele) => ele != val);
+  // for (i = 0; i < newNums.length; i++) {
+  //   nums[i] = newNums[i];
+  // }
+  //or
+  nums.length = 0;
+  nums.push(...newNums);
+  return newNums.length;
+};
+
+console.log(removeElement([3, 2, 2, 3], 3));
