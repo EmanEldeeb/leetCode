@@ -48,19 +48,17 @@ const removeElement = function (nums, val) {
 
 console.log(removeElement([3, 2, 2, 3], 3));
 
-//724. Find Pivot Index Runtime: 78 ms
+//724. Find Pivot Index
 var pivotIndex = function (nums) {
+  const numsTotal = nums.reduce((cur, pre) => cur + pre);
+  console.log(numsTotal);
+
+  let leftsum = 0;
   for (let i = 0; i < nums.length; i++) {
-    let firstpart = nums.slice(0, i);
-
-    firstpart = firstpart.length > 0 ? firstpart.reduce((a, b) => a + b) : 0;
-
-    let secondpart = nums.slice(i + 1, nums.length);
-    secondpart = secondpart.length > 0 ? secondpart.reduce((a, b) => a + b) : 0;
-
-    if (firstpart === secondpart) {
+    if (numsTotal - leftsum - nums[i] === leftsum) {
       return i;
     }
+    leftsum += nums[i];
   }
   return -1;
 };
