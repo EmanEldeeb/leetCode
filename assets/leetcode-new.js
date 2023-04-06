@@ -63,3 +63,16 @@ var pivotIndex = function (nums) {
   return -1;
 };
 console.log(pivotIndex([1, 7, 3, 6, 5, 6]));
+
+//Find All Numbers Disappeared in an Array
+var findDisappearedNumbers = function (nums) {
+  let result = [];
+  const set = new Set(nums);
+  for (let i = 0; i < nums.length; i++) {
+    if (!set.has(i + 1)) {
+      result.push(i + 1);
+    }
+  }
+  return result;
+};
+console.log(findDisappearedNumbers([4, 3, 2, 7, 8, 2, 3, 1]));
