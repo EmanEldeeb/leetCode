@@ -96,3 +96,12 @@ var generate = function (numRows) {
 };
 
 console.log(generate(5));
+
+//242. Valid Anagram -- run time 89 ms
+var isAnagram = function (s, t) {
+  const sortedS = s.split("").sort().join("");
+  const sortedT = t.split("").sort().join("");
+  return sortedS === sortedT ? true : false;
+};
+
+console.log(isAnagram("anagram", "nagaram"));
