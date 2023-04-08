@@ -1,4 +1,4 @@
-//Length of Last Word
+//58. Length of Last Word -- run time 57ms
 const lengthOfLastWord = function (s) {
   const sArray = s.trim().split(" ");
   return sArray[sArray.length - 1].length;
@@ -6,7 +6,7 @@ const lengthOfLastWord = function (s) {
 
 console.log(lengthOfLastWord("heelo worled "));
 
-//217. Contains Duplicate
+//217. Contains Duplicate -- run time 97ms
 const containsDuplicate = function (nums) {
   // const newNum = [...new Set(nums)];
   // if (nums.length - newNum.length >= 1) {
@@ -20,7 +20,7 @@ const containsDuplicate = function (nums) {
 };
 console.log(containsDuplicate([1, 2, 2, 3]));
 
-//1. Two Sum
+//1. Two Sum -- run time 85ms
 var twoSum = function (nums, target) {
   for (let i = 0; i < nums.length; i++) {
     let first = nums[i];
@@ -34,7 +34,7 @@ var twoSum = function (nums, target) {
 
 console.log(twoSum([2, 7, 11, 15], 18));
 
-//27. Remove Element
+//27. Remove Element --  run time 63ms
 const removeElement = function (nums, val) {
   const newNums = nums.filter((ele) => ele != val);
   // for (i = 0; i < newNums.length; i++) {
@@ -48,7 +48,7 @@ const removeElement = function (nums, val) {
 
 console.log(removeElement([3, 2, 2, 3], 3));
 
-//724. Find Pivot Index
+//724. Find Pivot Index -- run time 79ms
 var pivotIndex = function (nums) {
   const numsTotal = nums.reduce((cur, pre) => cur + pre);
   console.log(numsTotal);
@@ -64,7 +64,7 @@ var pivotIndex = function (nums) {
 };
 console.log(pivotIndex([1, 7, 3, 6, 5, 6]));
 
-//Find All Numbers Disappeared in an Array
+//448. Find All Numbers Disappeared in an Array -- run time 122ms
 var findDisappearedNumbers = function (nums) {
   let result = [];
   const set = new Set(nums);
@@ -76,3 +76,23 @@ var findDisappearedNumbers = function (nums) {
   return result;
 };
 console.log(findDisappearedNumbers([4, 3, 2, 7, 8, 2, 3, 1]));
+
+//118. Pascal's Triangle -- run time 47 ms
+var generate = function (numRows) {
+  let result = new Array(numRows);
+
+  for (let i = 0; i < numRows; i++) {
+    let row = new Array(i + 1);
+    row[0] = 1;
+    row[row.length - 1] = 1;
+    for (let j = 1; j < row.length - 1; j++) {
+      let aboveRow = result[i - 1];
+      row[j] = aboveRow[j - 1] + aboveRow[j];
+    }
+    result[i] = row;
+  }
+
+  return result;
+};
+
+console.log(generate(5));
