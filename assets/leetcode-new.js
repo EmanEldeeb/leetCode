@@ -105,3 +105,17 @@ var isAnagram = function (s, t) {
 };
 
 console.log(isAnagram("anagram", "nagaram"));
+
+//392. Is Subsequence -- 70 ms
+var isSubsequence = function (s, t) {
+  let sIndex = 0;
+  if (s.length == 0 && t.length == 0) return true;
+  for (let i = 0; i < t.length; i++) {
+    if (s[sIndex] === t[i]) sIndex++;
+
+    if (sIndex === s.length) return true;
+  }
+  return false;
+};
+
+console.log(isSubsequence("abxc", "ahbgdc"));
