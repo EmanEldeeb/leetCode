@@ -154,3 +154,32 @@ var isValid = function (s) {
   }
   return stack.length == 0;
 };
+
+//682. Baseball Game --58 ms
+var calPoints = function (operations) {
+  let stack = [];
+  let result = 0;
+  for (let i = 0; i < operations.length; i++) {
+    if (
+      operations[i] !== "C" &&
+      operations[i] !== "D" &&
+      operations[i] !== "+"
+    ) {
+      stack.push(+operations[i]);
+    } else if (operations[i] === "C") {
+      stack.pop();
+    } else if (operations[i] === "D") {
+      const double = 2 * stack[stack.length - 1];
+      stack.push(double);
+    } else if (operations[i] === "+" && stack.length >= 2) {
+      const added = stack[stack.length - 1] + stack[stack.length - 2];
+      stack.push(added);
+    }
+  }
+  for (const num of stack) {
+    result += num;
+  }
+  return result;
+};
+
+console.log(calPoints(["5", "-2", "4", "C", "D", "9", "+", "+"]));
