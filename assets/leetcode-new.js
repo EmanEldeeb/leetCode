@@ -133,3 +133,24 @@ var removeStars = function (s) {
   }
   return arr.join("");
 };
+
+//20. Valid Parentheses -- 70ms
+var isValid = function (s) {
+  let stack = [];
+  for (let i = 0; i < s.length; i++) {
+    if (s[i] === "(" || s[i] === "{" || s[i] === "[") {
+      stack.push(s[i]);
+    } else {
+      if (
+        !stack.length ||
+        (s[i] === ")" && stack[stack.length - 1] !== "(") ||
+        (s[i] === "}" && stack[stack.length - 1] !== "{") ||
+        (s[i] === "]" && stack[stack.length - 1] !== "[")
+      ) {
+        return false;
+      }
+      stack.pop();
+    }
+  }
+  return stack.length == 0;
+};
