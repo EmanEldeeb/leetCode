@@ -119,3 +119,17 @@ var isSubsequence = function (s, t) {
 };
 
 console.log(isSubsequence("abxc", "ahbgdc"));
+
+// Removing Stars From a String --100ms
+
+var removeStars = function (s) {
+  const arr = [];
+  for (i = 0; i < s.length; i++) {
+    if (s[i] == "*" && arr.length) {
+      arr.pop();
+    } else {
+      arr.push(s[i]);
+    }
+  }
+  return arr.join("");
+};
