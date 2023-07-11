@@ -183,3 +183,46 @@ var calPoints = function (operations) {
 };
 
 console.log(calPoints(["5", "-2", "4", "C", "D", "9", "+", "+"]));
+
+//Evaluate Reverse Polish Notation --82 ms
+var evalRPN = function (tokens) {
+  let stack = [];
+  for (let i = 0; i < tokens.length; i++) {
+    if (
+      tokens[i] !== "+" &&
+      tokens[i] !== "-" &&
+      tokens[i] !== "*" &&
+      tokens[i] !== "/"
+    ) {
+      stack.push(+tokens[i]);
+    }
+
+    if (stack.length >= 2 && tokens[i] === "+") {
+      let second = stack.pop();
+      let first = stack.pop();
+
+      stack.push(first + second);
+    }
+    if (stack.length >= 2 && tokens[i] === "-") {
+      let second = stack.pop();
+      let first = stack.pop();
+
+      stack.push(first - second);
+    }
+    if (stack.length >= 2 && tokens[i] === "*") {
+      let second = stack.pop();
+      let first = stack.pop();
+      stack.push(first * second);
+    }
+    if (stack.length >= 2 && tokens[i] === "/") {
+      let second = stack.pop();
+      let first = stack.pop();
+      let dev = Math.trunc(first / second);
+      stack.push(dev);
+    }
+  }
+  return stack[0];
+};
+console.log(
+  evalRPN(["10", "6", "9", "3", "+", "-11", "*", "/", "*", "17", "+", "5", "+"])
+);
