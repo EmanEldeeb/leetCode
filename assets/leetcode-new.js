@@ -226,3 +226,24 @@ var evalRPN = function (tokens) {
 console.log(
   evalRPN(["10", "6", "9", "3", "+", "-11", "*", "/", "*", "17", "+", "5", "+"])
 );
+
+//car fleet
+var carFleet = function (target, position, speed) {
+  const cars = [];
+  if (position.length < 2) {
+    return position.length;
+  }
+
+  const pair = position.map((ele, index) => [ele, speed[index]]);
+  pair.sort((a, b) => a[0] - b[0]);
+  for (let i = pair.length - 1; i >= 0; i--) {
+    const [pos, speed] = pair[i];
+    cars.push((target - pos) / speed);
+    if (cars.length >= 2 && cars[cars.length - 1] <= cars[cars.length - 2]) {
+      cars.pop();
+    }
+  }
+  return cars.length;
+};
+
+console.log(carFleet(12, [0, 2, 4], [4, 2, 1]));
