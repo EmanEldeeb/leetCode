@@ -247,3 +247,23 @@ var carFleet = function (target, position, speed) {
 };
 
 console.log(carFleet(12, [0, 2, 4], [4, 2, 1]));
+
+//--63ms simplifyPath
+var simplifyPath = function (path) {
+  const stack = [];
+  const pathArr = path.split("/");
+  console.log(pathArr, "path");
+  for (let i = 0; i < pathArr.length; i++) {
+    if (pathArr[i] === "." || pathArr[i] === "") {
+      continue;
+    } else if (pathArr[i] === "..") {
+      if (stack.length > 0) {
+        stack.pop();
+      }
+    } else {
+      stack.push(pathArr[i]);
+    }
+  }
+
+  return "/" + stack.join("/");
+};
