@@ -267,3 +267,28 @@ var simplifyPath = function (path) {
 
   return "/" + stack.join("/");
 };
+
+//removeKdigits
+var removeKdigits = function (num, k) {
+  let stack = [];
+
+  for (let n of num) {
+    while (stack.length && n < stack[stack.length - 1] && k > 0) {
+      console.log(n, "one");
+      stack.pop();
+      k--;
+    }
+    console.log(n, "two");
+    stack.push(n);
+  }
+  while (stack.length && k > 0) {
+    stack.pop();
+    k--;
+  }
+
+  while (stack.length && stack[0] == 0) {
+    stack.shift();
+  }
+
+  return stack.join("") || "0";
+};
